@@ -1,0 +1,8 @@
+/build/
+/.nb-gradle/private/
+/.gradle/1.11/taskArtifacts/outputFileStates.bin
+/.gradle/1.11/taskArtifacts/cache.properties
+/.gradle/1.11/taskArtifacts/fileSnapshots.bin
+/.gradle/1.11/taskArtifacts/cache.properties.lock
+/.gradle/1.11/taskArtifacts/fileHashes.bin
+/.gradle/1.11/taskArtifacts/taskArtifacts.bin
