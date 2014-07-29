@@ -9,7 +9,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 class StopWildFlyTask extends BaseWildFlyTask {
     	
     @TaskAction
-    def start() {
+    def stop() {
         def binDir = getWildFlyBinDir()
         if( isUp() )
         {        

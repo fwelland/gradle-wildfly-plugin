@@ -32,19 +32,9 @@ class BaseWildFlyTask extends DefaultTask {
         
     def isUp()
     {        
-        ProcessBuilder builder = new ProcessBuilder(getCliScript(), '--connect', 'command="quit"' )
-        builder.directory(new File(getWildFlyBinDir()))                
-        builder.redirectErrorStream(true)
-        Process process = builder.start()                
-        InputStream stdout = process.getInputStream()
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stdout)) 
-        def line
-        while ((line = reader.readLine()) != null) 
-        {        }       
-        return( process.waitFor() == 0)                 
+        return( executeSingleCLICommand('quit') )                 
     }
-    
-    
+        
     def executeSingleCLICommand(String command)
     {
         def cmd = 'command="' + command + '"'
