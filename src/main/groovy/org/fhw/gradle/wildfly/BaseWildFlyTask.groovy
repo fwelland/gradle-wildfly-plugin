@@ -35,8 +35,14 @@ class BaseWildFlyTask extends DefaultTask {
         def line
         while ((line = reader.readLine()) != null) 
         {
-            println line
+            //println line
         }
         return( process.exitValue() == 0)                 
+    }
+    
+    
+    def executeSingleCLICommand()
+    {
+        
     }
 }
