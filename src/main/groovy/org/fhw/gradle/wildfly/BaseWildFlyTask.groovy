@@ -45,8 +45,19 @@ class BaseWildFlyTask extends DefaultTask {
     }
     
     
-    def executeSingleCLICommand()
+    def executeSingleCLICommand(String command)
     {
-        
+        def cmd = 'command="' + command + '"'
+        def opts = '--connect'
+        ProcessBuilder builder = new ProcessBuilder(getCliScript(), opts, cmd )       
+        builder.directory(new File(getWildFlyBinDir()))                
+        builder.redirectErrorStream(true)
+        Process process = builder.start()                
+        InputStream stdout = process.getInputStream()
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stdout)) 
+        def line
+        while ((line = reader.readLine()) != null) 
+        {    }       
+        return( process.waitFor() == 0)                 
     }
 }

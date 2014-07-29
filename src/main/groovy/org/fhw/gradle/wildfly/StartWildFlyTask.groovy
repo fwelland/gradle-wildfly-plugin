@@ -28,6 +28,10 @@ class StartWildFlyTask extends BaseWildFlyTask {
                 }
             }            
         }
+        else
+        {
+            println "seems like wildfly is already started."
+        }
     }
 }
 

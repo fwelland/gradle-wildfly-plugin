@@ -11,18 +11,9 @@ class StopWildFlyTask extends BaseWildFlyTask {
     @TaskAction
     def start() {
         def binDir = getWildFlyBinDir()
-        if( ! isUp() )
+        if( isUp() )
         {        
-            def cliLog = new File(binDir, 'g-gf-wfstart.txt') 
-            if (cliLog.exists())
-            {
-                cliLog.delete() 
-            }
-            ProcessBuilder builder = new ProcessBuilder(getStarterScript())
-            builder.directory(new File(binDir))                    
-            builder.redirectErrorStream(true)
-            builder.redirectOutput(cliLog)
-            Process process = builder.start()        
+            executeSingleCLICommand('shutdown')
         }
     }
 }
