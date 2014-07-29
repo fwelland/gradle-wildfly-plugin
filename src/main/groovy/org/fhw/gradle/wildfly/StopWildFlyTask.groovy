@@ -6,7 +6,7 @@ import org.gradle.api.DefaultTask
 import org.apache.tools.ant.taskdefs.condition.Os
 
 
-class StartWildFlyTask extends BaseWildFlyTask {
+class StopWildFlyTask extends BaseWildFlyTask {
     	
     @TaskAction
     def start() {

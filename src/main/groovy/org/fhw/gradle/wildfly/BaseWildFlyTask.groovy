@@ -23,6 +23,12 @@ class BaseWildFlyTask extends DefaultTask {
     {
         return getWildFlyBinDir() + '/' + project.wildfly.cli_script
     }
+    
+    
+    def getStartRegex()
+    {
+        return project.wildfly.start_regex
+    }    
         
     def isUp()
     {        
@@ -34,10 +40,8 @@ class BaseWildFlyTask extends DefaultTask {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stdout)) 
         def line
         while ((line = reader.readLine()) != null) 
-        {
-            //println line
-        }
-        return( process.exitValue() == 0)                 
+        {        }       
+        return( process.waitFor() == 0)                 
     }
     
     
