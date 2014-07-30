@@ -10,12 +10,17 @@ class DeployWildFlyTask extends BaseWildFlyTask {
     	        
     @TaskAction
     def deploy() {
+
+        println 'deploy invoked'
         def binDir = getWildFlyBinDir()
         if( isUp() )
-        {       
-//            def dpl = "deploy --force [PATH_TO_WAR]"
-//            executeSingleCLICommand(dpl)
-println getFiles()
+        { 
+            println 'deploying!!'
+            println "archive path " + project.ear.archivePath
+            def dpl = "deploy " + getArchiveToDeploy()
+println dpl
+            executeSingleCLICommand(dpl)
+            println "after execute..."
         }
         else
         {

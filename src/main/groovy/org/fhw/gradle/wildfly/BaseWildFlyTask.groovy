@@ -25,6 +25,16 @@ class BaseWildFlyTask extends DefaultTask {
     }
     
     
+    def getArchiveToDeploy()
+    {
+        def String arcPath = project.wildfly.path_to_deployable
+        if(null == arcPath)
+        {
+            arcPath = project.ear.archivePath   
+        }
+        return arcPath
+    }
+    
     def getStartRegex()
     {
         return project.wildfly.start_regex
@@ -39,6 +49,9 @@ class BaseWildFlyTask extends DefaultTask {
     {
         def cmd = 'command="' + command + '"'
         def opts = '--connect'
+        println getCliScript() 
+        println opts 
+        println cmd 
         ProcessBuilder builder = new ProcessBuilder(getCliScript(), opts, cmd )       
         builder.directory(new File(getWildFlyBinDir()))                
         builder.redirectErrorStream(true)
@@ -47,7 +60,7 @@ class BaseWildFlyTask extends DefaultTask {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stdout)) 
         def line
         while ((line = reader.readLine()) != null) 
-        {    }       
+        {   println line  }       
         return( process.waitFor() == 0)                 
     }
 }
