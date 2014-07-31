@@ -6,6 +6,6 @@ class WildFlyPluginExtension {
     def String cli_script = 'jboss-cli.sh'
     def String start_regex = '^.*started in.*- Started.*$'    
     def String path_to_deployable = null 
-    
+    def String deployment_name = null 
 }
    

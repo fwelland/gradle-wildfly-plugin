@@ -6,15 +6,15 @@ import org.gradle.api.DefaultTask
 import org.apache.tools.ant.taskdefs.condition.Os
 
 
-class DeployWildFlyTask extends BaseWildFlyTask {
+class UndeployWildFlyTask extends BaseWildFlyTask {
     	        
     @TaskAction
-    def deploy() {
+    def undeploy() {
 
         def binDir = getWildFlyBinDir()
         if( isUp() )
         { 
-            executeCLICommand(false, "deploy",getArchiveToDeploy(),'--name="' + getDeploymentName() + '"', "--force")
+            executeCLICommand(false, "undeploy", getDeploymentName())
         }
         else
         {

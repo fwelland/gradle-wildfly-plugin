@@ -12,5 +12,6 @@ class WildFlyPlugin implements Plugin<Project> {
         project.task('start', type: StartWildFlyTask)
         project.task('stop', type: StopWildFlyTask)        
         project.task('deploy', type: DeployWildFlyTask)                
+        project.task('undeploy', type: UndeployWildFlyTask)                        
     }       
 }

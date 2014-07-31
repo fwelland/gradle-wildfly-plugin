@@ -35,6 +35,17 @@ class BaseWildFlyTask extends DefaultTask {
         return arcPath
     }
     
+    
+    def getDeploymentName()
+    {
+        def String nm = project.wildfly.deployment_name
+        if(null == nm)
+        {
+            nm = project.ear.name   
+        }
+        return nm
+    }    
+    
     def getStartRegex()
     {
         return project.wildfly.start_regex
@@ -42,17 +53,32 @@ class BaseWildFlyTask extends DefaultTask {
         
     def isUp()
     {        
-        return( executeSingleCLICommand('quit') )                 
+        return( executeCLICommand(true, 'quit') )                 
     }
         
-    def executeSingleCLICommand(String command)
+    
+    def executeCLICommand(Boolean includeCMDOption, String ... commands)
     {
-        def cmd = 'command="' + command + '"'
-        def opts = '--connect'
-        println getCliScript() 
-        println opts 
-        println cmd 
-        ProcessBuilder builder = new ProcessBuilder(getCliScript(), opts, cmd )       
+        def cmds = [getCliScript(), "--connect"]
+        
+        if(includeCMDOption)
+        {            
+            def cmd =  '--command="'
+            for(String s : commands)
+            {
+                cmd += s
+            }                
+            cmd += '"'                
+            cmds.add(cmd)
+        }
+        else
+        {
+            cmds.add('"')
+            for(String s : commands)
+                cmds.add(s)
+            cmds.add('"')
+        }
+        ProcessBuilder builder = new ProcessBuilder( cmds )                                               
         builder.directory(new File(getWildFlyBinDir()))                
         builder.redirectErrorStream(true)
         Process process = builder.start()                
@@ -60,7 +86,7 @@ class BaseWildFlyTask extends DefaultTask {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stdout)) 
         def line
         while ((line = reader.readLine()) != null) 
-        {   println line  }       
+        {   }       
         return( process.waitFor() == 0)                 
-    }
+    }        
 }
