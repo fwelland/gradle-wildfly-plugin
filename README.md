@@ -6,7 +6,7 @@ A Gradle/Groovy Hack to noodle around  (start | stop etc) with a local Wildfly (
 This plugin is described in a bit more detail [here](http://stupidfredtricks.blogspot.com/2014/08/a-simple-gradle-plugin-for-wildfly-and.html "gradle plugin for wildfly"). 
 
 
-#Usage:
+##Usage:
 
 1.  clone this repo
 2.  build it with gradle
@@ -36,7 +36,7 @@ This plugin is described in a bit more detail [here](http://stupidfredtricks.blo
 ```
 
 
-Prorperties you can tweak:   
+##Prorperties you can tweak:   
 
 * wildfly_home = '/opt/wildfly'                 //where your wildfly lives
 * start_script = 'standalone.sh'                //script to start it 
@@ -45,6 +45,6 @@ Prorperties you can tweak:
 * path_to_deployable = null                     //where your deploy is   
 * deployment_name = null                        //name of deployable 
 
-This is very much work in progress.   I have really only used it on a EAR style archive.  
-I have NOT added all the possible configuration options (ports, work for WAR or JAR projects etc) that it probably should have.   
-Feel free to hack away at it. 
+This is very much work in progress.   I have really only used it on a EAR style archive.  I have NOT added all the possible configuration options (ports, work for WAR or JAR projects etc) that it probably should have.   
+
+Feel free to hack away at it.
