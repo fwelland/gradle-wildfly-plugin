@@ -6,13 +6,13 @@ A Gradle/Groovy Hack to noodle around  (start | stop etc) with a local Wildfly (
 This plugin is described in a bit more detail [here](http://stupidfredtricks.blogspot.com/2014/08/a-simple-gradle-plugin-for-wildfly-and.html "gradle plugin for wildfly"). 
 
 
-Usage:
+#Usage:
 
 1.  clone this repo
 2.  build it with gradle
 3.  use in your build file a bit like snippet below. 
 
-
+```
     apply plugin: 'wildfly'
 
     buildscript {
@@ -33,7 +33,7 @@ Usage:
        wildfly_home = '/opt/wildfly-8.1.0.Final'
        deployment_name = 'Schlepp'
     }
-
+```
 
 
 Prorperties you can tweak:   
