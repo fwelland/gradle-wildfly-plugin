@@ -13,6 +13,7 @@ Usage:
 3.  use in your build file a bit like snippet below. 
 
 
+
     apply plugin: 'wildfly'
 
     buildscript {
