@@ -13,7 +13,6 @@ Usage:
 3.  use in your build file a bit like snippet below. 
 
 
-
     apply plugin: 'wildfly'
 
     buildscript {
@@ -34,7 +33,6 @@ Usage:
        wildfly_home = '/opt/wildfly-8.1.0.Final'
        deployment_name = 'Schlepp'
     }
-
 
 Prorperties you can tweak:   
 
