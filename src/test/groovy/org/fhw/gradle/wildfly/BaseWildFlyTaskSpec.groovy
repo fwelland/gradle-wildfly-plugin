@@ -11,8 +11,10 @@ class BaseWildFlyTaskSpec extends Specification {
         given: 
             Project project = ProjectBuilder.builder().build()
             project.apply plugin: 'wildfly'
+            
         when:
             String  binDir = project.tasks.deploy.getWildFlyBinDir()
+            
         then:  
             binDir == "/opt/wildfly/bin"
     }
@@ -24,22 +26,13 @@ class BaseWildFlyTaskSpec extends Specification {
             Project project = ProjectBuilder.builder().build()
             project.apply plugin: 'wildfly'
             project.wildfly.wildfly_home = '/opt/yar'
+            
         when:
             String  binDir = project.tasks.deploy.getWildFlyBinDir()
+            
         then:  
             binDir == "/opt/yar/bin"        
     }
     
-    def "Test Get Archive To Deploy"()
-    {
-        given: 
-            Project project = ProjectBuilder.builder().build()
-            project.apply plugin: 'wildfly'
-            project.apply plugin: 'ear'
-        when:
-            String  binDir = project.tasks.deploy.
-        then:  
-            binDir == "/opt/wildfly"        
-    }
 }
 

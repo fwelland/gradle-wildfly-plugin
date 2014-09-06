@@ -11,3 +11,9 @@ dependencies {
         exclude group: 'org.codehaus.groovy'
     }
 }
+
+
+task wrapper(type:Wrapper){
+    gradleVersion = '2.0'
+}
+
