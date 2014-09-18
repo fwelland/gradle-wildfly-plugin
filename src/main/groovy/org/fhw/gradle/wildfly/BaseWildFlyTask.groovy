@@ -40,11 +40,26 @@ class BaseWildFlyTask extends DefaultTask {
     {
         def String nm = project.wildfly.deployment_name
         if(null == nm)
-        {
-            nm = project.ear.name   
+        {             
+            nm = project.name 
+//            if (project.plugins.hasPlugin('war'))
+//            {
+//                nm = project.war.name
+//            }
+//            else if (project.plugins.hasPlugin('ear'))
+//            {
+//                nm = project.ear.name
+//            }
         }
         return nm
     }    
+    
+    
+//              return project.tasks.getByName(WarPlugin.WAR_TASK_NAME).archivePath
+//        }
+//        else if(project.plugins.hasPlugin(EarPlugin.EAR_TASK_NAME)) {
+//            return project.tasks.getByName(EarPlugin.EAR_TASK_NAME).archivePath
+//        }
     
     def getStartRegex()
     {

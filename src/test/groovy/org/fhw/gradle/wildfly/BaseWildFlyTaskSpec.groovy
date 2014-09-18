@@ -34,5 +34,33 @@ class BaseWildFlyTaskSpec extends Specification {
             binDir == "/opt/yar/bin"        
     }
     
+    def "Test ability to fetch the deployment name when wildfly plugin closure provides a name "()
+    {
+        given: 
+            Project project = ProjectBuilder.builder().build()
+            project.apply plugin: 'wildfly'
+            project.wildfly.deployment_name = 'frank-burns'
+            
+        when:
+            String  nme = project.tasks.deploy.getDeploymentName()
+            
+        then:  
+            nme == "frank-burns"        
+    }    
+    
+    
+    
+    def "Test ability to fetch the deployment name from applied ear plugin and no wf plugin closure"()
+    {
+        when:
+            Project project = ProjectBuilder.builder().withName('little-fish').build()
+            project.apply plugin: 'ear'            
+            project.apply plugin: 'wildfly'            
+            String  nme = project.tasks.deploy.getDeploymentName()
+           
+        then:  
+            nme == "little-fish"        
+    }        
+       
 }
 
