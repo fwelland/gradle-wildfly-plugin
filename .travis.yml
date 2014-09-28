@@ -2,6 +2,6 @@ language: groovy
 jdk:
 - oraclejdk7
 env:
-  matrix :
+  global :
   - secure: K3HX9mOLoZef/+F6Co3wHM65J07sZi76P14qOvRHXt/ZFnN9VvTudBOPZNUYmXeVWDO6zhL2dqvLJcJdgUErLcHNMJE55CbtVXmk5C2IRvjwOa36wxXwIv5dxSrTjuuh+bE41k18cBfAVdPv3tRjP7gt8E7m7bM0Meax8DEntyA=
   - secure: K38+4yFSheN2rY/9M77w2qrNtgxsbig0/ZzvKmrkKjtsenWe9CWD4oi9X4Mh3fmYlDPQZaeY7VYc6OXuSMhlShSz8BI+PxfxWN/jz3I6SWBU/xX4WLF/YEBhpls2LzP7QEfQF+22Sxz9m4Ww+xjdRxUKO7PacyqAiWgIzJ3at3Q=
