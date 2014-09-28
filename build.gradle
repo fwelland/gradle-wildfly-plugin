@@ -1,7 +1,19 @@
 apply plugin: 'groovy'
+apply plugin: 'com.jfrog.bintray'
+
+version = '0.1'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
+    }
+}
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -12,6 +24,29 @@ dependencies {
     }
 }
 
+bintray {
+    user = bintrayUser
+    key = bintrayAPIKey
+
+    filesSpec { 
+        from 'build/libs'
+        into "org/fhw/gradle-wildfly-plugin/$version"
+        include '*.jar'
+    }
+    
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+    pkg {
+        repo = 'FredsStuff'
+        name = 'gradle-wildfly-plugin'
+        desc = 'simple gradle plugin for basic jboss manipulation on a workstation!'
+        websiteUrl = 'http://stupidfredtricks.blogspot.com/2014/08/a-simple-gradle-plugin-for-wildfly-and.html'
+        vcsUrl = 'https://github.com/fwelland/gradle-wildfly-plugin.git'
+        licenses = ['Apache-2.0']
+        labels = ['gradle', 'wildfly', 'java', 'jboss']        
+                 
+    }
+}
 
 task wrapper(type:Wrapper){
     gradleVersion = '2.0'
