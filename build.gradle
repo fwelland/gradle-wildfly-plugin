@@ -3,6 +3,9 @@ apply plugin: 'com.jfrog.bintray'
 
 version = '0.1'
 
+def uzer = btIdentity ?: System.getenv('btIdentity')
+def creds = btIDCreds ?: System.getenv('btIDCreds')
+
 buildscript {
     repositories {
         jcenter()
@@ -25,8 +28,8 @@ dependencies {
 }
 
 bintray {
-    user = bintrayUser
-    key = bintrayAPIKey
+    user = uzer
+    key = creds
 
     filesSpec { 
         from 'build/libs'
