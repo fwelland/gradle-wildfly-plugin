@@ -3,8 +3,8 @@ apply plugin: 'com.jfrog.bintray'
 
 version = '0.1'
 
-def uzer = btIdentity ?: System.getenv('btIdentity')
-def creds = btIDCreds ?: System.getenv('btIDCreds')
+def uzer = hasProperty('btIdentity') ? btIdentity : System.getenv('btIdentity')
+def creds = hasProperty('btIDCreds') ? btIDCreds : System.getenv('btIDCreds')
 
 buildscript {
     repositories {
