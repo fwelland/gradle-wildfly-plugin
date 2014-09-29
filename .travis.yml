@@ -1,6 +1,8 @@
 language: groovy
 jdk:
-- oraclejdk7
+- oraclejdk7 
+after_success: 
+- ./gradlew  bintrayUpload -PbtIdentity="${btIdentity}" -PbtIDCreds="${btIDCreds}"
 env:
   global:
   - secure: e1ChIoTY48SBhNyLNTE1VF8DZcjkgEdJTq6Gxoxcbk/zUIF8F1DraSt3Ooo4JfsM+/8zyzBtkPgctKCgWLNfFSxoizPsfLqgSLnQS1V7vS0gMON1VF09VQjvKsCzxsUNFsHxpi3wnrA/Gt38kBnqeX6YG2fJOIV4uoc4WN35PfM=
