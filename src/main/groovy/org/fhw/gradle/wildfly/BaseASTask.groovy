@@ -1,0 +1,24 @@
+package org.fhw.gradle.wildfly
+
+import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Input
+import org.gradle.api.DefaultTask
+import org.apache.tools.ant.taskdefs.condition.Os
+
+
+class BaseASTask extends BaseWildFlyTask {
+        
+    def isCLIScriptOnPath()
+    {
+        def String cli_ver = getCliScriptName() 
+        def rc
+        try{
+            rc = cli_ver.execute()
+        }
+        catch(e){
+            rc = false
+        }
+        return(rc)
+    }
+    
+}

@@ -24,6 +24,10 @@ class BaseWildFlyTask extends DefaultTask {
         return getWildFlyBinDir() + '/' + project.wildfly.cli_script
     }
     
+    def getCliScriptName()
+    {
+        return(project.wildfly.cli_script)
+    }
     
     def getArchiveToDeploy()
     {

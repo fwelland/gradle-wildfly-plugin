@@ -19,6 +19,33 @@ class BaseWildFlyTaskSpec extends Specification {
             binDir == "/opt/wildfly/bin"
     }
     
+    def "Test Get CLI Script Default"()
+    {
+        given: 
+            Project project = ProjectBuilder.builder().build()
+            project.apply plugin: 'wildfly'
+            
+        when:
+            String  cli = project.tasks.deploy.getCliScript()
+            
+        then:  
+            cli == '/opt/wildfly/bin/jboss-cli.sh'
+    }
+    
+    def "Test Get CLI Script name default"()
+    {
+        given: 
+            Project project = ProjectBuilder.builder().build()
+            project.apply plugin: 'wildfly'
+            
+        when:
+            String  cli = project.tasks.deploy.getCliScriptName()
+            
+        then:  
+            cli == 'jboss-cli.sh'
+    }    
+    
+    
     
     def "Test Get Wildfly Bin Directory with spcified base"()
     {
