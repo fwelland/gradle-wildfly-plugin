@@ -14,11 +14,11 @@ class UndeployWildFlyTask extends BaseWildFlyTask {
         def binDir = getWildFlyBinDir()
         if( isUp() )
         { 
-            executeCLICommand(false, "undeploy", getDeploymentName())
+            executeCLICommand("undeploy", getDeploymentName())
         }
         else
         {
-            println "start wildfly first"
+            println "start app server first"
         }
     }
 }

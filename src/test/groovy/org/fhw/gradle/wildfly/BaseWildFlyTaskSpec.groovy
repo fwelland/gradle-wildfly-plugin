@@ -66,28 +66,14 @@ class BaseWildFlyTaskSpec extends Specification {
         given: 
             Project project = ProjectBuilder.builder().build()
             project.apply plugin: 'wildfly'
-            project.wildfly.deployment_name = 'frank-burns'
+            project.wildfly.path_to_deployable = '/usr/overthere/frank-burns.ear'
             
         when:
             String  nme = project.tasks.deploy.getDeploymentName()
             
         then:  
-            nme == "frank-burns"        
+            nme == "frank-burns.ear"        
     }    
-    
-    
-    
-    def "Test ability to fetch the deployment name from applied ear plugin and no wf plugin closure"()
-    {
-        when:
-            Project project = ProjectBuilder.builder().withName('little-fish').build()
-            project.apply plugin: 'ear'            
-            project.apply plugin: 'wildfly'            
-            String  nme = project.tasks.deploy.getDeploymentName()
-           
-        then:  
-            nme == "little-fish"        
-    }        
        
 }
 

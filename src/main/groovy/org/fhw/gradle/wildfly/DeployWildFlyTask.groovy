@@ -14,11 +14,11 @@ class DeployWildFlyTask extends BaseWildFlyTask {
         def binDir = getWildFlyBinDir()
         if( isUp() )
         { 
-            executeCLICommand(false, "deploy",getArchiveToDeploy(),'--name="' + getDeploymentName() + '"', "--force")
+            executeCLICommand("deploy",getArchiveToDeploy(),"--force")
         }
         else
         {
-            println "start wildfly first"
+            println "start appserver  first"
         }
     }
 }

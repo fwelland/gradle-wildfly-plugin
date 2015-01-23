@@ -13,7 +13,7 @@ class StopWildFlyTask extends BaseWildFlyTask {
         def binDir = getWildFlyBinDir()
         if( isUp() )
         {        
-            executeCLICommand(true, 'shutdown')
+            executeCLICommand('shutdown')
         }
     }
 }
